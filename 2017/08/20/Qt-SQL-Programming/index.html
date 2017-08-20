@@ -6,19 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://liyinglr.github.io">
-  <title>Hello World | 天蝎的小本本里其实都是空的</title>
+  <title>Qt SQL Programming | 天蝎的小本本里其实都是空的</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+  <meta name="description" content="介绍一点在Qt中使用MySQL的经验">
+<meta name="keywords" content="qt,mysql">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://liyinglr.github.io/2017/08/16/hello-world/index.html">
+<meta property="og:title" content="Qt SQL Programming">
+<meta property="og:url" content="https://liyinglr.github.io/2017/08/20/Qt-SQL-Programming/index.html">
 <meta property="og:site_name" content="天蝎的小本本里其实都是空的">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+<meta property="og:description" content="介绍一点在Qt中使用MySQL的经验">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-17T15:32:37.142Z">
+<meta property="og:updated_time" content="2017-08-20T02:17:27.092Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+<meta name="twitter:title" content="Qt SQL Programming">
+<meta name="twitter:description" content="介绍一点在Qt中使用MySQL的经验">
   
     <link rel="alternative" href="/atom.xml" title="天蝎的小本本里其实都是空的" type="application/atom+xml">
   
@@ -136,35 +137,198 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-hello-world" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Qt-SQL-Programming" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Hello World
+      Qt SQL Programming
     </h1>
   
 
         
-        <a href="/2017/08/16/hello-world/" class="archive-article-date">
-  	<time datetime="2017-08-16T15:14:25.814Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-16</time>
+        <a href="/2017/08/20/Qt-SQL-Programming/" class="archive-article-date">
+  	<time datetime="2017-08-20T01:53:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-20</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.<br><a id="more"></a></p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <p>介绍一点在Qt中使用MySQL的经验<br><a id="more"></a></p>
+<h2 id="Connecting-to-Databases"><a href="#Connecting-to-Databases" class="headerlink" title="Connecting to Databases"></a>Connecting to Databases</h2><blockquote>
+<p>为了使用<code>QSqlQuery</code> or <code>QSqlQueryModel</code>访问数据库，需要创建并打开一个或多个database connections. Database connections通常由connection name标识，而不是数据库名字。<code>QSqlDatabase</code>提供了默认的不具名的connection。如果你的应用只需要一个connection，那么创建一个默认的connection是很方便的。</p>
+</blockquote>
+<p>创建connection和打开它是有区别的。创建connection只是创建了一个<code>QSqlDatabase</code>的实例，并且该实例在被打开之前都是不可用的。<br>下面的代码片段，展示了如何创建一个默认connection，并打开它</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">QSqlDatabase db = QSqlDatabase::addDatabase(&quot;QMYSQL&quot;);//&quot;QMYSQL&quot;制定了数据库驱动的类型</div><div class="line">db.setHostName(&quot;bigblue&quot;);</div><div class="line">db.setDatabaseName(&quot;flightdb&quot;);</div><div class="line">db.setUserName(&quot;acarlson&quot;);</div><div class="line">db.setPassword(&quot;1uTbSbAs&quot;);</div><div class="line">bool ok = db.open();</div></pre></td></tr></table></figure>
+<ul>
+<li>Qt支持以下database driver</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Driver name</th>
+<th style="text-align:left">DBMS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>QDB2</td>
+<td style="text-align:left">IBM</td>
+<td>DB2 (version 7.1 and above)</td>
+</tr>
+<tr>
+<td>QIBASE</td>
+<td style="text-align:left">Borland InterBase</td>
+</tr>
+<tr>
+<td>QMYSQL</td>
+<td style="text-align:left">MySQL</td>
+</tr>
+<tr>
+<td>QOCI</td>
+<td style="text-align:left">Oracle Call Interface Driver</td>
+</tr>
+<tr>
+<td>QODBC</td>
+<td style="text-align:left">Open Database Connectivity (ODBC) - Microsoft SQL Server and</td>
+<td></td>
+<td>other</td>
+<td>ODBC-compliant databases</td>
+</tr>
+<tr>
+<td>QPSQL</td>
+<td style="text-align:left">PostgreSQL (versions 7.3 and above)</td>
+</tr>
+<tr>
+<td>QSQLITE2</td>
+<td style="text-align:left">SQLite version 2</td>
+</tr>
+<tr>
+<td>QSQLITE</td>
+<td style="text-align:left">SQLite version 3</td>
+</tr>
+<tr>
+<td>QTDS</td>
+<td style="text-align:left">Sybase Adaptive ServerNote: obsolete from Qt 4.7</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>我们也可以给<code>addDatabase()</code>传递第二个参数来指定connection name。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">QSqlDatabase firstDB = QSqlDatabase::addDatabase(&quot;QMYSQL&quot;, &quot;first&quot;);</div><div class="line">QSqlDatabase secondDB = QSqlDatabase::addDatabase(&quot;QMYSQL&quot;, &quot;second&quot;);</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>open()</code>失败，返回false。此时，可以使用<code>QSqlDatabase::lastError()</code>来获得对应的错误信息</p>
+</li>
+<li><p>一个connection一旦建立，我们可以在任何地方使用<code>QSqlDatabase::database()</code>来获得一个指向该链接的指针。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">QSqlDatabase defaultDB = QSqlDatabase::database();</div><div class="line">QSqlDatabase firstDB = QSqlDatabase::database(&quot;first&quot;);</div><div class="line">QSqlDatabase secondDB = QSqlDatabase::database(&quot;second&quot;);</div></pre></td></tr></table></figure>
+</li>
+<li><p>删除一个connection。首先要用<code>QSqlDatabase::close()</code>关闭数据库，然后用静态函数<code>QSqlDatabase::removeDatabase()</code>删除connection</p>
+</li>
+</ul>
+<h2 id="Executing-SQL-Statements"><a href="#Executing-SQL-Statements" class="headerlink" title="Executing SQL Statements"></a>Executing SQL Statements</h2><p><code>QSqlQuery</code>提供了一系列接口来执行SQL语句，以及浏览查询的结果集合 </p>
+<p>而<code>QSqlQueryModel</code> and <code>QSqlTableModel</code>类提供了更高阶的数据库访问接口</p>
+<h3 id="Executing-a-Query"><a href="#Executing-a-Query" class="headerlink" title="Executing a Query"></a>Executing a Query</h3><p>To execute an SQL statement, simply create a <code>QSqlQuery</code> object and call <code>QSqlQuery::exec()</code> like this:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">QSqlQuery query;</div><div class="line">query.exec(&quot;SELECT name, salary FROM employee WHERE salary &gt; 50000&quot;);</div></pre></td></tr></table></figure></p>
+<p><code>QSqlQuery</code>的构造函数有一个可选参数，可以为其制定connection。上例中则直接使用默认connection</p>
+<ul>
+<li>如果哟错误产生<code>exec()</code> returns false. The error is then available as <code>QSqlQuery::lastError()</code>.</li>
+</ul>
+<h3 id="Navigating-the-Result-Set浏览结果"><a href="#Navigating-the-Result-Set浏览结果" class="headerlink" title="Navigating the Result Set浏览结果"></a>Navigating the Result Set浏览结果</h3><p>在调用<code>exec()</code>之后，<code>QSqlQuery</code>的内部指针指向结果集中第一条记录的前一个位置。所以必须调用<code>QSqlQuery::next()</code>来获得第一个记录，以此类推可以获得全部记录。next()返回false则表示不再有任何记录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">while (query.next()) &#123;</div><div class="line">    QString name = query.value(0).toString();</div><div class="line">    int salary = query.value(1).toInt();</div><div class="line">    qDebug() &lt;&lt; name &lt;&lt; salary;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><code>QSqlQuery::value()</code>返回当前记录的一个field(列)的值。Fields从0开始索引。 <code>QSqlQuery::value()</code>返回一个<code>QVariant</code>.</p>
+<p>Qt支持的类型，可以参考下表，或者<a href="http://doc.qt.io/qt-5/sql-types.html" target="_blank" rel="external">Data Types for Qt-supported Database Systems</a><br><strong>MySQL Data Types</strong><br>|MySQL data type    |SQL type description    |Recommended input (C++ or Qt data type)|<br>|—-|—-|—-|<br>|TINYINT|    8 bit signed integer|    typedef qint8|<br>|TINYINT UNSIGNED    |8 bit unsigned integer|    typedef quint8|<br>|SMALLINT|    16-bit signed intege|r    typedef qint16<br>|SMALLINT| UNSIGNED    16-bit unsigned integer|    typedef quint16<br>|INT|    32-bit signed integer|    typedef qint32<br>|INT UNSIGNED|    32-bit unsigned integer|    typedef quint32<br>|BIGINT|    64-bit signed integer|    typedef qint64<br>|FLOAT|    32-bit Floating Point|    By default mapping to <code>QString</code><br>|DOUBLE|    64-bit Floating Point|    By default mapping to <code>QString</code><br>|CHAR|    Character string|    Mapped to <code>QString</code><br>|VARCHAR|    Character string|    Mapped to <code>QString</code><br>|TINYTEXT|    Character string|    Mapped to <code>QString</code><br>|TEXT|    Character string|    Mapped to <code>QString</code><br>|MEDIUMTEXT|    Character string|    Mapped to <code>QString</code><br>|LONGTEXT|    Character string|    Mapped to <code>QString</code><br>|CLOB|    Character large string object    |Mapped to QString<br>|all BLOB types|    BLOB    |Mapped to QByteArray<br>|DATE|    Date without Time    |Mapped to QDate<br>|DATETIME|    Date and Time    |Mapped to QDateTime<br>|TIMESTAMP|    Date and Time    |Mapped to QDateTime<br>|TIME|    Time    |Mapped to QTime<br>|YEAR|    Year (int)    |Mapped to QDateTime<br>|ENUM|    Enumeration of Value Set    |Mapped to QString</p>
+<p><strong>QSQLITE SQLite version 3 Data Types</strong></p>
+<table>
+<thead>
+<tr>
+<th>QSQLITE</th>
+<th>SQLite version 3 data type</th>
+<th>SQL type description    Recommended input (C++ or Qt data type)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NULL</td>
+<td>NULL value.</td>
+<td>NULL</td>
+</tr>
+<tr>
+<td>INTEGER</td>
+<td>Signed integer, stored in 8, 16, 24, 32, 48, or 64-bits depending on the magnitude of the value.</td>
+<td>typedef qint8/16/32/64</td>
+</tr>
+<tr>
+<td>REAL</td>
+<td>64-bit floating point value.</td>
+<td>By default mapping to QString</td>
+</tr>
+<tr>
+<td>TEXT</td>
+<td>Character string (UTF-8, UTF-16BE or UTF-16-LE).</td>
+<td>Mapped to QString</td>
+</tr>
+<tr>
+<td>CLOB</td>
+<td>Character large string object</td>
+<td>Mapped to QString</td>
+</tr>
+<tr>
+<td>BLOB</td>
+<td>The value is a BLOB of data, stored exactly as it was input.</td>
+<td>Mapped to QByteArray</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>可以使用<code>QSqlQuery::next()</code>, <code>QSqlQuery::previous()</code>, <code>QSqlQuery::first()</code>, <code>QSqlQuery::last()</code>, and <code>QSqlQuery::seek()</code>来获取不同位置的记录</li>
+<li><code>QSqlQuery::at()</code>返回当前的row index</li>
+<li><p><code>QSqlQuery::size()</code>返回结果集中的所有行数，但是只对支持的结果有效</p>
+<p>  如果你不确定，driver是否支持某个feature，可以使用<code>QSqlDriver::hasFeature()</code>来获取是否支持该特性. </p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">QSqlQuery query;</div><div class="line">int numRows;</div><div class="line">query.exec(&quot;SELECT name, salary FROM employee WHERE salary &gt; 50000&quot;);</div><div class="line"></div><div class="line">QSqlDatabase defaultDB = QSqlDatabase::database();</div><div class="line">if (defaultDB.driver()-&gt;hasFeature(QSqlDriver::QuerySize)) &#123;</div><div class="line">    numRows = query.size();</div><div class="line">&#125; else &#123;</div><div class="line">    ** // this can be very slow **</div><div class="line">    query.last();</div><div class="line">    numRows = query.at() + 1;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>如果你只想使用<code>next()</code> and <code>seek()</code> 来迭代获取记录，那么在调用exec()之前你可以调用<code>QSqlQuery::setForwardOnly(true)</code>. 当操作一个大的结果集时，这是一个很简单的优化方式，可以提高query效率。</strong></p>
+<blockquote>
+<p><strong>void QSqlQuery::setForwardOnly(bool forward)</strong></p>
+<p>If forward is true, only <code>next()</code> and <code>seek()</code> with positive values, are allowed for navigating the results.</p>
+<p>如果驱动支持的话，Forward only mode可以节省内存空间，因为结果不需要缓存。他将会提升一些数据库的性能<br>默认情况下，Forward only mode是关闭的。如果想开启，必须在query被prepared or executed之前调用<code>setForwardOnly()</code>. Note that<br>the constructor that takes a query and a database may execute the<br>query.</p>
+<p>Setting forward only to false is a suggestion to the database engine, which has the final say on whether a result set is forward only or scrollable. isForwardOnly() will always return the correct status of the result set.</p>
+<p><strong>Note: 如果在query执行之后调用<code>setForwardOnly</code>会出现不可预料的结果，最坏会直接爆炸</strong></p>
+</blockquote>
+<h3 id="Inserting-Updating-and-Deleting-Records"><a href="#Inserting-Updating-and-Deleting-Records" class="headerlink" title="Inserting, Updating, and Deleting Records"></a>Inserting, Updating, and Deleting Records</h3><h4 id="1-insert"><a href="#1-insert" class="headerlink" title="1. insert"></a>1. insert</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">QSqlQuery query;</div><div class="line">query.exec(&quot;INSERT INTO employee (id, name, salary) &quot;</div><div class="line">           &quot;VALUES (1001, &apos;Thad Beaumont&apos;, 65000)&quot;);</div></pre></td></tr></table></figure>
+<blockquote>
+<p>如果你想一次插入多条记录，通常这会比分割成一条一条且插入实际值更搞笑。这可以通过占位符来实现。Qt支持两种占位符:<strong>named<br>binding</strong> and <strong>positional binding</strong>. Qt提供的数据库驱动支持两种占位符。</p>
+</blockquote>
+<ul>
+<li><p>named binding</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">QSqlQuery query;</div><div class="line">query.prepare(&quot;INSERT INTO employee (id, name, salary) &quot;</div><div class="line">              &quot;VALUES (:id, :name, :salary)&quot;);</div><div class="line">query.bindValue(&quot;:id&quot;, 1001);</div><div class="line">query.bindValue(&quot;:name&quot;, &quot;Thad Beaumont&quot;);</div><div class="line">query.bindValue(&quot;:salary&quot;, 65000);</div><div class="line">query.exec();</div></pre></td></tr></table></figure>
+</li>
+<li><p>positional binding:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">QSqlQuery query;</div><div class="line">query.prepare(&quot;INSERT INTO employee (id, name, salary) &quot;</div><div class="line">              &quot;VALUES (?, ?, ?)&quot;);</div><div class="line">query.addBindValue(1001);</div><div class="line">query.addBindValue(&quot;Thad Beaumont&quot;);</div><div class="line">query.addBindValue(65000);</div><div class="line">query.exec();</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>The actual query that ends up being executed by the DBMS is available as QSqlQuery::executedQuery().</p>
+<p><strong>当需要插入多条记录时，你只需要调用<code>QSqlQuery::prepare()</code>一次，然后在<code>exec()</code>之后，可以调用多次<code>bindValue()</code> or <code>addBindValue()</code></strong><br>When inserting multiple records, you only need to call QSqlQuery::prepare() once. Then you call bindValue() or addBindValue() followed by exec() as many times as necessary.</p>
+<p>除了性能的考量，占位符的另一个优势是可以指定转义字符</p>
+<h4 id="2-update"><a href="#2-update" class="headerlink" title="2. update"></a>2. update</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">QSqlQuery query;</div><div class="line">query.exec(&quot;UPDATE employee SET salary = 70000 WHERE id = 1003&quot;);</div></pre></td></tr></table></figure>
+<ul>
+<li>也可以使用占位符。</li>
+</ul>
+<h4 id="3-delete"><a href="#3-delete" class="headerlink" title="3. delete"></a>3. delete</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">QSqlQuery query;</div><div class="line">query.exec(&quot;DELETE FROM employee WHERE id = 1007&quot;);</div></pre></td></tr></table></figure>
+<h4 id="4-Transactions事务"><a href="#4-Transactions事务" class="headerlink" title="4. Transactions事务"></a>4. Transactions事务</h4><ul>
+<li><p>可以通过QSqlDriver::hasFeature(QSqlDriver::Transactions)查询当前的数据库引擎是否支持</p>
+</li>
+<li><p>使用<code>QSqlDatabase::transaction()</code>来初始化一个事务</p>
+</li>
+<li><p>随后就可以在事务的context内部执行SQL命令</p>
+</li>
+<li><p>然后调用<code>QSqlDatabase::commit()</code> or <code>QSqlDatabase::rollback()</code></p>
+</li>
+</ul>
+<p><strong>必须在创建query之前开始事务</strong></p>
+<p>Example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">QSqlDatabase::database().transaction();</div><div class="line">QSqlQuery query;</div><div class="line">query.exec(&quot;SELECT id FROM employee WHERE name = &apos;Torild Halvorsen&apos;&quot;);</div><div class="line">if (query.next()) &#123;</div><div class="line">    int employeeId = query.value(0).toInt();</div><div class="line">    query.exec(&quot;INSERT INTO project (id, name, ownerid) &quot;</div><div class="line">               &quot;VALUES (201, &apos;Manhattan Project&apos;, &quot;</div><div class="line">               + QString::number(employeeId) + &apos;)&apos;);</div><div class="line">&#125;</div><div class="line">QSqlDatabase::database().commit();</div></pre></td></tr></table></figure></p>
+<p>事务可以确保一个复杂的操作是原子的，比如，查找外键和创建记录；另外也可以在一个复杂操作中间取消它</p>
 
       
 
@@ -194,6 +358,21 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">qt</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -244,7 +423,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=https://liyinglr.github.io/2017/08/16/hello-world/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://liyinglr.github.io/2017/08/20/Qt-SQL-Programming/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -258,15 +437,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/08/16/中文/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          test
-        
-      </div>
-    </a>
   
+    <a href="/2017/08/20/我的Django入门/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">我的Django入门</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
@@ -291,7 +466,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-number">1.1.</span> <span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-number">1.2.</span> <span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Connecting-to-Databases"><span class="toc-number">1.</span> <span class="toc-text">Connecting to Databases</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Executing-SQL-Statements"><span class="toc-number">2.</span> <span class="toc-text">Executing SQL Statements</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Executing-a-Query"><span class="toc-number">2.1.</span> <span class="toc-text">Executing a Query</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Navigating-the-Result-Set浏览结果"><span class="toc-number">2.2.</span> <span class="toc-text">Navigating the Result Set浏览结果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Inserting-Updating-and-Deleting-Records"><span class="toc-number">2.3.</span> <span class="toc-text">Inserting, Updating, and Deleting Records</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-insert"><span class="toc-number">2.3.1.</span> <span class="toc-text">1. insert</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-update"><span class="toc-number">2.3.2.</span> <span class="toc-text">2. update</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-delete"><span class="toc-number">2.3.3.</span> <span class="toc-text">3. delete</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-Transactions事务"><span class="toc-number">2.3.4.</span> <span class="toc-text">4. Transactions事务</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -307,7 +482,7 @@
   
 
   
-  <div id="SOHUCS" sid="hello-world" ></div> 
+  <div id="SOHUCS" sid="Qt-SQL-Programming" ></div> 
 <script type="text/javascript"> 
 (function(){ 
 var appid = "true"; 
